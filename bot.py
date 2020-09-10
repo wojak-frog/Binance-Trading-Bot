@@ -25,17 +25,10 @@ while True:
     r = requests.get(
         'https://www.binance.com/en/support/announcement/c-49?navId=49') #latest announcements section for binance.com
     html = BS(r.content, 'html.parser')
-    #print(html.prettify())
-
     to_fetch = []
     for link in html.find_all('a'):
-
-
-
-
+                  
         link_text = link.get('href')
-
-
         if str(link_text).startswith('/en/support/articles/'):
             to_fetch.append(list(link_text.replace('/en/support/articles/', '').split('-')))
 
@@ -44,15 +37,12 @@ while True:
         x.pop(0)
         x = to_fetch[0]
 
-
-
-
-
         for i in x:
             if i in trigger:
                 for coin in coins:
                     if coin in x:
                         coin_ticker = coin
+                  
                 if x in saved_data:
                     pass
                 else:
@@ -88,12 +78,7 @@ while True:
                         print(client.get_ticker(symbol=(f'{coin_ticker}BTC'))['askPrice'])
 
 
-
-
-
-
-
-
+                  #get pair's latest infos and convert the price
                     info = client.get_symbol_info(f'{coin_ticker}BTC')
                     #print(info)
                     btc = client.get_ticker(symbol=('BTCUSDT'))['lastPrice']
