@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup as BS
 
 from binance.client import Client
-client = Client('U5piM1a1hPzVVyy8JdlOznmFiBaRYYNLy7ti4iFJuZWCuOQYEzyiKsHDNHm3bGRb','WbjcwUPUduKSKNPdMVVwXLtYfIz0kKxr2ZeppW3sGm6M10v5AG7zXAA76RHZeEsM')
+client = Client(' ',' ') #put your keys here
 
 coins = ['LTC', 'BNB', 'NEO', 'BCC', 'GAS', 'HSR', 'MCO', 'WTC', 'LRC', 'QTUM', 'YOYO', 'OMG', 'ZRX', 'STRAT', 'SNGLS', 'BQX', 'KNC', 'FUN', 'SNM',
          'IOTA', 'LINK', 'XVG', 'SALT', 'MDA', 'MTL', 'SUB', 'EOS', 'SNT', 'ETC', 'MTH', 'ENG', 'DNT', 'ZEC', 'BNT', 'AST', 'DASH', 'OAX', 'ICN', 'BTG', 'EVX',
@@ -17,13 +17,13 @@ coins = ['LTC', 'BNB', 'NEO', 'BCC', 'GAS', 'HSR', 'MCO', 'WTC', 'LRC', 'QTUM', 
          'FTT', 'TRY', 'EUR', 'OGN', 'DREP', 'TCT', 'WRX', 'LTO', 'MBL', 'COTI', 'STPT', 'ZAR', 'BKRW', 'SOL', 'IDRT', 'CTSI', 'HIVE', 'CHR', 'MDT', 'STMX', 'CRV']
 
 
-trigger = ['Won', 'Win', 'Lucky']
+trigger = ['Won', 'Win', 'Lucky'] # the positive words used in Binance announcements which trigger a buy order
 saved_data = []
 
 print("[*] connected to Binance...")
 while True:
     r = requests.get(
-        'https://www.binance.com/en/support/announcement/c-49?navId=49')  # https://www.binance.com/en/support/announcement/c-49?navId=49
+        'https://www.binance.com/en/support/announcement/c-49?navId=49') #latest announcements section for binance.com
     html = BS(r.content, 'html.parser')
     #print(html.prettify())
 
@@ -98,17 +98,17 @@ while True:
                     #print(info)
                     btc = client.get_ticker(symbol=('BTCUSDT'))['lastPrice']
                     token = client.get_ticker(symbol=(f'{coin_ticker}BTC'))
-                    #print(token)
+                    
                     token_price = token['lastPrice']
                     trade_amount = 0.5 / float(btc) / float(token_price)
-                    #print(float(trade_amount))
+                    
                     token_askPrice = token['askPrice']
 
 
 
 
 
-                    #order = client.order_limit_buy(
+                    #order = client.order_limit_buy(      ######  input the buy function when you are ready to run the bot ######
                         #symbol= 'TRXBNB',
                         #quantity= 50,
                         #price=0.000981)
