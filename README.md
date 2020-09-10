@@ -9,10 +9,10 @@ a Binance crypto trading bot which buys on news
   
 <p><h1>Imports and connecting:</h1><p>
   
-`import requests
-from bs4 import BeautifulSoup as BS
-from binance.client import Client
-client = Client(' ',' ') ` 
+`import requests`
+`from bs4 import BeautifulSoup as BS`
+`from binance.client import Client`
+`client = Client(' ',' ') ` 
 <br>
 
 in the first and second line, we import `requests` and `bs4` from `BeautifulSoup` to be able to extract the HTML syntax of Binance news webpage. <br>
