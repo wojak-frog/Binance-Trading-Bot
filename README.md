@@ -29,7 +29,7 @@ for link in html.find_all('a'):<br>
 
         for link in html.find_all('a'):
 
-<br>After that, using BeautifulSoop again, we get the `href` or links inserted in the `<a> </a>` element which result in extracting the announcement title: <br>
+<br>After that, using BeautifulSoup again, we get the `href` or links inserted in the `<a> </a>` element which result in extracting the announcement title: <br>
       `link_text = link.get('href')`
       
 <br>The next step is to use a condition statement `if` to check if the announcement's link start with `/en/support/articles/`: <br>
@@ -39,3 +39,14 @@ for link in html.find_all('a'):<br>
               - `/en/support/articles/` is removed from the title by replacing it with an empty string: `link_text.replace('/en/support/articles/', '')` <br><br>
               - all title's words are added to a list then splitted on `-` : `list(link_text.replace('/en/support/articles/', '').split('-'))` <br><br>
               - finally the result (a list) is added to `to_fetch` list: `to_fetch.append(list(link_text.replace('/en/support/articles/', '').split('-')))` <br><br>
+              
+              
+<p><h1>Title (news) analysis:</h1><p><br>
+  
+the trick in this bot is to analyse the announcement's title instead of the whole text. Because Binance is not a news magazine or something like that (it means there are no "clickbait" titles), so because of titles clarity, we can use the title's words to analyse and predict if it's a positive or negative news.<br>This bot is only "Bus on news", you can work on it more to add the ability to buy (+ve news) or sell (-ve news) according the announcement. Or even that, you can splitthe positive and negative news trading into 2 bots to make the execution faster.<br>
+Now let's dive into how the analysis work. First of all, a for loop iterate over each list in the `to_fetch` list (which is a list of lists): <br><br>
+            
+  `for x in to_fetch:` 
+   <br>...
+   <br> `for i in x:`
+   <br> After getting the list (news) from `to_fetch` , we use a conditional statement to check if the `i` (each element of the news, title's words) exist in `trigger` list. <br>    Then we iterate over coins tickers in `coins` list to check if it exist in the announcement words, if `True` , we assign the coin ticker to `coin_ticker` variable. <br>
