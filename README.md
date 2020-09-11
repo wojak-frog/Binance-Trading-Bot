@@ -60,5 +60,5 @@ Now let's dive into how the analysis work. First of all, a for loop iterate over
                 else:
                     saved_data.append(x)
                     print('[*] Possible Trade: ', ' '.join(x), f'Trade {coin_ticker}')
-                    print(client.get_ticker(symbol=(f'{coin_ticker}BTC'))['askPrice'])
+                    print(client.get_ticker(symbol=(f'{coin_ticker}BTC'))['askPrice'])`
 `
