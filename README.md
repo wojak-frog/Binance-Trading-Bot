@@ -43,10 +43,19 @@ for link in html.find_all('a'):<br>
               
 <p><h1>Title (news) analysis:</h1><p><br>
   
-the trick in this bot is to analyse the announcement's title instead of the whole text. Because Binance is not a news magazine or something like that (it means there are no "clickbait" titles), so because of titles clarity, we can use the title's words to analyse and predict if it's a positive or negative news.<br>This bot is only "Bus on news", you can work on it more to add the ability to buy (+ve news) or sell (-ve news) according the announcement. Or even that, you can splitthe positive and negative news trading into 2 bots to make the execution faster.<br>
+the trick in this bot is to analyse the announcement's title instead of the whole text. Because Binance is not a news magazine or something like that (it means there are no "clickbait" titles), so because of titles clarity, we can use the title's words to analyse and predict if it's a positive or negative news.<br>This bot is only "Buy on news", you can work on it more to add the ability to buy (+ve news) or sell (-ve news) according the announcement. Or even that, you can splitthe positive and negative news trading into 2 bots to make the execution faster.<br>
 Now let's dive into how the analysis work. First of all, a for loop iterate over each list in the `to_fetch` list (which is a list of lists): <br><br>
             
   `for x in to_fetch:` 
-   <br>...
+   <br>     ...
    <br> `for i in x:`
-   <br> After getting the list (news) from `to_fetch` , we use a conditional statement to check if the `i` (each element of the news, title's words) exist in `trigger` list. <br>    Then we iterate over coins tickers in `coins` list to check if it exist in the announcement words, if `True` , we assign the coin ticker to `coin_ticker` variable. <br>
+   <br> After getting the list (news) from `to_fetch` , we use a conditional statement to check if the `i` (each element of the news, title's words) exist in `trigger` list. Then we iterate over coins tickers in `coins` list to check if it exist in the announcement words, if `True` , we assign the coin ticker to `coin_ticker` variable. <br><br>
+   
+   Next, it checks if the announcemet words splitted list exist in `saved_data` -which is a global listed used as temporar memory as long as the .py is ruuning in your IDE- if `True` , it passes because it means that the news already exist. if `False` , it appends the news list to the `saved data` list and fetch pairs askPrice (which may be your entry price):
+   
+   `if x in saved_data:
+                    pass
+                else:
+                    saved_data.append(x)
+                    print('[*] Possible Trade: ', ' '.join(x), f'Trade {coin_ticker}')
+                    print(client.get_ticker(symbol=(f'{coin_ticker}BTC'))['askPrice'])`
