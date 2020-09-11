@@ -54,8 +54,8 @@ Now let's dive into how the analysis work. First of all, a for loop iterate over
    <br>Next, it checks if the announcemet words splitted list exist in `saved_data` -which is a global listed used as temporar memory as long as the .py is ruuning in your IDE- if `True` , it passes because it means that the news already exist. if `False` , it appends the news list to the `saved data` list and fetch pairs askPrice (which may be your entry price):<br><br>
    
    `if x in saved_data:` <br>
-                    `pass` <br>
-                `else:` <br>
-                    `saved_data.append(x)` <br>
-                    `print('[*] Possible Trade: ', ' '.join(x), f'Trade {coin_ticker}')`<br>
-                    `print(client.get_ticker(symbol=(f'{coin_ticker}BTC'))['askPrice'])`<br>
+                         `pass` <br>
+                         `else:` <br>
+                            `saved_data.append(x)` <br>
+                             `print('[*] Possible Trade: ', ' '.join(x), f'Trade {coin_ticker}')`<br>
+                             `print(client.get_ticker(symbol=(f'{coin_ticker}BTC'))['askPrice'])`<br>
