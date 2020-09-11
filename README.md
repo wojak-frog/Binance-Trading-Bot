@@ -25,7 +25,7 @@ Regarding the `coins` list, i have added the most recent added tokens and coins 
 
 <p><h1>Extracting announcements:</h1></p><br>
 the code below loops over all `<a> </a>`  HTML elements in Binance announcement page: <br>
-for link in html.find_all('a'):
+for link in html.find_all('a'):<br>
 
         for link in html.find_all('a'):
 
@@ -35,7 +35,7 @@ for link in html.find_all('a'):
 <br>The next step is to use a condition statement `if` to check if the announcement's link start with `/en/support/articles/`: <br>
       `if str(link_text).startswith('/en/support/articles/'):`
       
-   if `True` , we append to `to_fetch` list the 'clean' announcement title as follow: <br>
-              - `/en/support/articles/` is removed from the title by replacing it with an empty string: `link_text.replace('/en/support/articles/', '')` <br>
-              - all title's words are added to a list then splitted on `-` : `list(link_text.replace('/en/support/articles/', '').split('-'))` <br>
-              - finally the result (a list) is added to `to_fetch` list: `to_fetch.append(list(link_text.replace('/en/support/articles/', '').split('-')))` <br>
+   if `True` , we append to `to_fetch` list the 'clean' announcement title as follow: <br> <br>
+              - `/en/support/articles/` is removed from the title by replacing it with an empty string: `link_text.replace('/en/support/articles/', '')` <br><br>
+              - all title's words are added to a list then splitted on `-` : `list(link_text.replace('/en/support/articles/', '').split('-'))` <br><br>
+              - finally the result (a list) is added to `to_fetch` list: `to_fetch.append(list(link_text.replace('/en/support/articles/', '').split('-')))` <br><br>
